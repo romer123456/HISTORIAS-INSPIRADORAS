@@ -1,0 +1,17 @@
+youtube-transcript-api==0.6.2
+pytube==15.0.0
+faster-whisper==1.0.3
+openai==1.35.13
+TTS==0.22.0
+librosa==0.10.1
+numpy==1.26.4
+pillow==10.4.0
+torch>=2.2.0
+torchaudio>=2.2.0
+diffusers==0.29.2
+transformers==4.43.3
+accelerate==0.33.0
+safetensors==0.4.3
+langdetect==1.0.9
+regex==2024.5.15
+scikit-learn==1.5.1

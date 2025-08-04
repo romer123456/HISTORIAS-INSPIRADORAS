@@ -1,0 +1,36 @@
+# --- Carpetas de tu proyecto ---
+outputs/
+data/
+cache/
+.env
+
+# --- Python ---
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.egg-info/
+.eggs/
+build/
+dist/
+.venv/
+venv/
+env/
+
+# Cachés de herramientas/modelos
+/.cache/
+.huggingface/
+torch_cache/
+pip-wheel-metadata/
+
+# --- IDE / Editor ---
+.idea/
+.vscode/
+*.iml
+
+# --- SO ---
+.DS_Store
+Thumbs.db
+
+# --- Docker ---
+# (la imagen y capas no se suben; solo el Dockerfile)
