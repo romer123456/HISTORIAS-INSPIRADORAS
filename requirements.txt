@@ -3,8 +3,8 @@ pytube==15.0.0
 faster-whisper==1.0.3
 openai==1.35.13
 TTS==0.22.0
-librosa==0.10.1
-numpy==1.23.5
+librosa==0.10.0
+numpy==1.22.0
 pillow==10.4.0
 torch>=2.2.0
 torchaudio>=2.2.0
