@@ -5,5 +5,4 @@ outputs
 *.wav
 *.srt
 *.png
-*.txt
 *.log
