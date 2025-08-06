@@ -171,8 +171,10 @@ def parse_title_and_body(text: str):
 
 
 # ===== LLM (OpenAI) =====
-def build_prompt(reference_text: str, instruction: str, tema: str, restriccion: str, lang_code: str):
-    longitud_min, longitud_max = 1900, 2300
+def build_prompt(reference_text: str, instruction: str, tema: str, restriccion: str, lang_code: str, video_length_min: int = 8):
+    palabras_por_minuto = 150
+    longitud_min = palabras_por_minuto * video_length_min
+    longitud_max = int(longitud_min * 1.2)
     return PROMPT_BASE.format(
         longitud_min=longitud_min, longitud_max=longitud_max,
         tema=tema, restriccion=restriccion, referencia=reference_text[:4000],
@@ -223,6 +225,7 @@ def main():
     parser.add_argument("--youtube_url", required=True, help="Link público del video de referencia.")
     parser.add_argument("--instruction", required=True, help="Instrucciones (ej: 'Historia inspiradora de 15 minutos...').")
     parser.add_argument("--lang_hint", default="", help="Pista de idioma para Whisper (es|en).")
+    parser.add_argument("--video_length", type=int, default=8, help="Duración deseada del video en minutos")
     parser.add_argument("--similarity_threshold", type=float, default=0.80)
     parser.add_argument("--out_prefix", default=None, help="Prefijo para carpeta de salida.")
     parser.add_argument("--width", type=int, default=1920)
@@ -249,7 +252,7 @@ def main():
 
     tema = random.choice(TEMAS)
     restriccion = random.choice(RESTRICCIONES)
-    prompt = build_prompt(transcript, args.instruction, tema, restriccion, lang_code)
+    prompt = build_prompt(transcript, args.instruction, tema, restriccion, lang_code, args.video_length)
 
     print(">> 2) Generando historia con ChatGPT… (modelo:", OPENAI_MODEL, ")")
     histories = load_histories()
