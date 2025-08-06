@@ -1,6 +1,5 @@
 FROM nvidia/cuda:12.1.0-cudnn8-runtime-ubuntu22.04
 
-# Configuración inicial
 WORKDIR /app
 COPY requirements.txt .
 
@@ -10,7 +9,7 @@ RUN apt-get update && apt-get install -y \
     rm -rf /var/lib/apt/lists/*
 
 # Instalar numpy primero para evitar conflictos
-RUN pip install --no-cache-dir numpy==1.23.5
+RUN pip install --no-cache-dir numpy==1.22.0
 
 # Instalar el resto de dependencias
 RUN pip install --no-cache-dir -r requirements.txt
